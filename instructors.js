@@ -10,7 +10,23 @@ exports.post = function(req, res){
       return res.send("Preencha todos os campos corretamente")
   }
 
-  data.instructors.push(req.body)
+  let { avatar_url, name, birth, degree, typeClass, gender, services} = req.body
+
+  birth = Date.parse(birth)
+  const created_at = Date.now()
+  const id = Number(data.instructors.length + 1)
+
+  data.instructors.push({
+    id,
+    avatar_url,
+    name,
+    birth,
+    degree,
+    typeClass,
+    gender,
+    services,
+    created_at
+  })
 
   //é preciso usar o stringify para converter a forma de escrever em js para json
   fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
@@ -20,4 +36,19 @@ exports.post = function(req, res){
   })
   
   // return res.send(req.body)
+}
+
+exports.show = function(req, res) {
+  //req.params
+  const {id} = req.params
+
+  const instructorFound = data.instructors.find(function(instructor){
+    return instructor.id == id
+  })
+
+  if(!instructorFound) {
+    return res.send("Instrutor não encontrado!")
+  }
+
+  return res.send(instructorFound)
 }
