@@ -1,5 +1,7 @@
 const fs = require('fs')
 const data = require('./data.json')
+const {age} = require('./utils')
+const Intl = require('intl')
 
 exports.post = function(req, res){
   
@@ -50,5 +52,16 @@ exports.show = function(req, res) {
     return res.send("Instrutor não encontrado!")
   }
 
-  return res.send(instructorFound)
+  const instructor = {
+    ...instructorFound,
+    age: age(instructorFound.birth),
+    degree: instructorFound.degree.charAt(0).toUpperCase() 
+      + instructorFound.degree.slice(1),
+    typeClass: instructorFound.typeClass.charAt(0).toUpperCase() 
+      + instructorFound.typeClass.slice(1),
+    services: instructorFound.services.split(","),
+    created_at: new Intl.DateTimeFormat('pt-BR').format(instructorFound.created_at),
+  }
+
+  return res.render("instructors/show", {instructor})
 }
