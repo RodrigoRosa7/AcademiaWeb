@@ -3,46 +3,37 @@
 
 {% block content %}
 
-  <div class="card">
-    <section class="avatar"></section>
+  <div class="card table-container">
+    <table width="100%">
+      <thead>
+        <tr>
+          <th>Instrutor</th>
+          <th>Atendimento</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
 
-    <section class="details">
-      <h3>Detalhes</h3>
-
-      <div class="item">
-        <div>Instrutor</div>
-        <div>Ana Luiza</div>
-      </div>
-
-      <div class="item">
-        <div>Idade</div>
-        <div>25</div>
-      </div>
-
-      <div class="item">
-        <div>Grau de escolaridade</div>
-        <div>Superior Educação Física</div>
-      </div>
-
-      <div class="item">
-        <div>Tipo de aula</div>
-        <div>Presencial</div>
-      </div>
-
-      <div class="item">
-        <div>Acompanhamento</div>
-        <div>
-          <span>Musculação</span>
-          <span>Crossfit</span>
-        </div>
-      </div>
-
-      <div class="item">
-        <div>Desde</div>
-        <div>01/01/2020</div>
-      </div>
-
-    </section>
+      <tbody>
+        {% for instructor in instructors %}
+        <tr>
+          <td>
+            <span style="background-image: url({{instructor.avatar_url}});"></span>
+            {{instructor.name}}
+          </td>
+          
+          {# <td>{{instructor.services}}</td> #}
+          
+          <td>
+            {% for service in instructor.services %}
+              <span>{{service}}</span>
+            {% endfor %}
+          </td> 
+          
+          <td><a href="/instructors/{{instructor.id}}">Ver</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 
 {% endblock content %}

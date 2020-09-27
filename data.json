@@ -1,11 +1,26 @@
 {
   "instructors": [
     {
-      "avatar_url": "https://images.unsplash.com/photo-1546483875-ad9014c88eba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=674&q=80",
-      "name": "Aline Silva",
-      "birth": "1995-09-10",
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+      "name": "Fernanda Souza",
+      "birth": 631152000000,
+      "degree": "mestrado",
+      "typeClass": "presencial",
       "gender": "F",
-      "services": "Musculação, Crossfit"
+      "services": "Musculação, Crossfit, Jump, natação",
+      "created_at": 1601154794346
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1571019613914-85f342c6a11e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+      "name": "Aline Silva Araujo",
+      "birth": 742003200000,
+      "degree": "medio",
+      "typeClass": "distancia",
+      "gender": "F",
+      "services": "Musculação, Crossfit",
+      "created_at": 1601223086880
     }
   ]
 }

@@ -5,6 +5,20 @@ const {age, date} = require('./utils')
 //foi preciso instalar npm install intl para funcionar para pt-BR
 const Intl = require('intl')
 
+exports.index = function(req, res) {
+
+  let instructors = data.instructors.map(function(instructor){
+    const newInstructor = {
+      ...instructor,
+      services: instructor.services.split(",")
+    }
+
+    return newInstructor
+  })
+
+  return res.render('instructors/index', {instructors})
+}
+
 exports.post = function(req, res){
   
   const keys = Object.keys(req.body) //retorna um array ["avatar_url", "name", "birth", "gender", "services"]
@@ -103,7 +117,8 @@ exports.put = function(req, res) {
   const instructor = {
     ...instructorFound,
     ...req.body,
-    birth: Date.parse(req.body.birth)
+    birth: Date.parse(req.body.birth),
+    id: Number(req.body.id)
   }
 
   data.instructors[index] = instructor
