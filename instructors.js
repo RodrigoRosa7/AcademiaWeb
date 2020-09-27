@@ -1,6 +1,8 @@
 const fs = require('fs')
 const data = require('./data.json')
-const {age} = require('./utils')
+const {age, date} = require('./utils')
+
+//foi preciso instalar npm install intl para funcionar para pt-BR
 const Intl = require('intl')
 
 exports.post = function(req, res){
@@ -64,4 +66,67 @@ exports.show = function(req, res) {
   }
 
   return res.render("instructors/show", {instructor})
+}
+
+exports.edit = function(req, res) {
+  const {id} = req.params
+
+  const instructorFound = data.instructors.find(function(instructor){
+    return instructor.id == id
+  })
+
+  if(!instructorFound) {
+    return res.send("Instrutor não encontrado!")
+  }
+
+  const instructor = {
+    ...instructorFound,
+    birth: date(instructorFound.birth)
+  }
+
+  return res.render("instructors/edit", {instructor})
+}
+
+exports.put = function(req, res) {
+  const {id} = req.body
+  let index = 0
+
+  const instructorFound = data.instructors.find(function(instructor, foundIndex){
+    if(id == instructor.id) {
+      index = foundIndex
+      return true
+    }    
+  })
+
+  if(!instructorFound) return res.send('Instrutor não encontrado!')
+
+  const instructor = {
+    ...instructorFound,
+    ...req.body,
+    birth: Date.parse(req.body.birth)
+  }
+
+  data.instructors[index] = instructor
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
+    if(err) return res.send("Erro na gravação de dados!")
+
+    return res.redirect(`/instructors/${id}`)
+  })
+}
+
+exports.delete = function(req, res) {
+  const {id} = req.body
+
+  const filteredInstructors = data.instructors.filter(function(instructor){
+    return instructor.id != id
+  })
+
+  data.instructors = filteredInstructors
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
+    if(err) return res.send("Erro na exclusão")
+
+    return res.redirect("/instructors")
+  })
 }

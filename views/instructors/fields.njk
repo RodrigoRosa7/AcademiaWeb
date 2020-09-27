@@ -1,0 +1,134 @@
+{# esse arquivo é usado para compartilhar código igual em diferentes arquivos, como por exemplo os campos de criar e editar cadastro #}
+
+<div class="item">
+  <div>Avatar URL</div>
+  <div>
+    <input 
+      type="url" 
+      name="avatar_url" 
+      placeholder="http://" 
+      value="{{instructor.avatar_url}}"
+    >
+  </div>
+</div>
+
+<div class="item">
+  <div>Nome</div>
+  <div>
+    <input 
+      type="text" 
+      name="name" 
+      value="{{instructor.name}}"
+    >
+  </div>
+</div>
+
+<div class="item">
+  <div>Data de nascimento</div>
+  <div>
+    <input 
+      type="date" 
+      name="birth"
+      value="{{instructor.birth}}"
+    >
+  </div>
+</div>
+
+<div class="item">
+  <div>Grau de escolaridade</div>
+  <div>
+    <select name="degree">
+      <option 
+        value="medio" 
+        {% if instructor.degree == "medio" %}
+          selected
+        {% endif %}>Ensino Médio
+      </option>
+
+      <option 
+        value="superior"
+        {% if instructor.degree == "superior" %}
+          selected
+        {% endif %}>Ensino Superior
+      </option>
+
+      <option 
+        value="mestrado"
+        {% if instructor.degree == "mestrado" %}
+          selected
+        {% endif %}>Mestrado
+      </option>
+
+      <option 
+        value="doutorado"
+        {% if instructor.degree == "doutorado" %}
+          selected
+        {% endif %}>Doutorado
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="item">
+  <div>Tipo da aula</div>
+  <div>
+    <span>
+      <input 
+        type="radio" 
+        name="typeClass" 
+        value="presencial" 
+        {% if instructor.typeClass == "presencial" %}
+          checked
+        {% endif %}>Presencial
+    </span>
+
+    <span>
+      <input 
+        type="radio" 
+        name="typeClass" 
+        value="distancia"
+        {% if instructor.typeClass == "distancia" %}
+          checked
+        {% endif %}>À distância
+    </span>
+  </div>
+</div>
+
+<div class="item">
+  <div>Gênero</div>
+  <div>
+    <span>
+      <input 
+      type="radio" 
+      name="gender" 
+      value="M" 
+      {% if instructor.gender == "M" %}
+        checked
+      {% endif %}>Masculino
+    </span>
+
+    <span>
+      <input 
+      type="radio" 
+      name="gender" 
+      value="F"
+      {% if instructor.gender == "F" %}
+        checked
+      {% endif %}>Feminino
+    </span>
+  </div>
+</div>
+
+<div class="item">
+  <div>Área de atuação</div>
+  <div>
+    <input 
+      type="text" 
+      name="services" 
+      placeholder="Separe os serviços por vírgula"
+      value="{{instructor.services}}"
+    >
+  </div>
+</div>
+
+<button type="submit">Salvar</button>
