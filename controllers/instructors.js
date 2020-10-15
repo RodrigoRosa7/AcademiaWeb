@@ -1,6 +1,6 @@
 const fs = require('fs')
-const data = require('./data.json')
-const {age, date} = require('./utils')
+const data = require('../data.json')
+const {age, date} = require('../utils')
 
 //foi preciso instalar npm install intl para funcionar para pt-BR
 const Intl = require('intl')
@@ -17,6 +17,10 @@ exports.index = function(req, res) {
   })
 
   return res.render('instructors/index', {instructors})
+}
+
+exports.create = function(req, res){
+  return res.render('instructors/create')
 }
 
 exports.post = function(req, res){
@@ -50,7 +54,7 @@ exports.post = function(req, res){
   fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
     if(err) return res.send("Erro na gravação de dados.")
 
-    return res.redirect("/instructors")
+    return res.redirect(`/instructors/${id}`)
   })
   
   // return res.send(req.body)
@@ -95,7 +99,7 @@ exports.edit = function(req, res) {
 
   const instructor = {
     ...instructorFound,
-    birth: date(instructorFound.birth)
+    birth: date(instructorFound.birth).iso
   }
 
   return res.render("instructors/edit", {instructor})

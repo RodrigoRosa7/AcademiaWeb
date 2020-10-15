@@ -21,6 +21,41 @@
       "gender": "F",
       "services": "Musculação, Crossfit",
       "created_at": 1601223086880
+    },
+    {
+      "id": 3,
+      "avatar_url": "https://images.unsplash.com/photo-1550977616-efc580084ac5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=738&q=80",
+      "name": "Rogério Santos Alves",
+      "birth": 574732800000,
+      "degree": "superior",
+      "typeClass": "presencial",
+      "gender": "M",
+      "services": "Musculação",
+      "created_at": 1602521637354
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1571019613914-85f342c6a11e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+      "name": "Julia Vieira",
+      "email": "juliavieira@gmail.com",
+      "birth": 830044800000,
+      "gender": "F",
+      "blood": "AB-",
+      "weight": "66",
+      "height": "169"
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1550977616-efc580084ac5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=738&q=80",
+      "name": "Alex Garcia",
+      "email": "alex.garcia@gmail.com",
+      "birth": 929750400000,
+      "gender": "M",
+      "blood": "A-",
+      "weight": "88",
+      "height": "191"
     }
   ]
 }
