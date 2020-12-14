@@ -39,28 +39,28 @@
   <div>
     <select name="degree">
       <option 
-        value="medio" 
+        value="Ensino Médio" 
         {% if instructor.degree == "medio" %}
           selected
         {% endif %}>Ensino Médio
       </option>
 
       <option 
-        value="superior"
+        value="Ensino Superior"
         {% if instructor.degree == "superior" %}
           selected
         {% endif %}>Ensino Superior
       </option>
 
       <option 
-        value="mestrado"
+        value="Mestrado"
         {% if instructor.degree == "mestrado" %}
           selected
         {% endif %}>Mestrado
       </option>
 
       <option 
-        value="doutorado"
+        value="Doutorado"
         {% if instructor.degree == "doutorado" %}
           selected
         {% endif %}>Doutorado
@@ -76,8 +76,8 @@
       <input 
         type="radio" 
         name="typeClass" 
-        value="presencial" 
-        {% if instructor.typeClass == "presencial" %}
+        value="Presencial" 
+        {% if instructor.typeClass == "Presencial" %}
           checked
         {% endif %}>Presencial
     </span>
@@ -86,8 +86,8 @@
       <input 
         type="radio" 
         name="typeClass" 
-        value="distancia"
-        {% if instructor.typeClass == "distancia" %}
+        value="À distância"
+        {% if instructor.typeClass == "À distância" %}
           checked
         {% endif %}>À distância
     </span>

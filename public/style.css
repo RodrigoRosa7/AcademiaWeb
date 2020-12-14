@@ -305,3 +305,72 @@ tbody tr td:nth-child(2) span {
   margin-top: 8px;
   display: inline-block;
 }
+
+/* ---------------- */
+
+/* FILTERS */
+.table-container .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.table-container .header form {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+  grid-gap: 8px;
+}
+
+.table-container .header a {
+  width: 120px;
+  margin: 0;
+}
+
+.table-container .header form input {
+  border: 1px solid #eee;
+  padding: 4px 8px;
+  box-sizing: border-box;
+}
+
+.table-container .header form button {
+  margin: 0;
+}
+
+/* ---------------- */
+
+/* PAGINATION */
+
+.table-container {
+  display: grid;
+  grid-template: 64px 1fr 16px / 1fr;
+}
+
+.table-container .header {
+  margin: 0;
+  align-self: start;
+}
+
+.table-container .pagination {
+  margin: 0;
+  justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.pagination a {
+  padding: 6px 8px;
+  background: var(--button-blue);
+  border-radius: 4px;
+  color: #FFFFFF;
+  border-style: none;
+}
+
+.pagination a:hover {
+  filter: brightness(0.6);
+}

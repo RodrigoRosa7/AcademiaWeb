@@ -5,13 +5,28 @@
 
   <div class="card table-container">
     
-    <a href="/instructors/create">Novo</a>
+    <div class="header">
+      <a class="button" href="/instructors/create">Novo</a>
+
+      <form action="/instructors" method="get">
+        <input 
+          type="text"
+          name="filter"
+          placeholder="Filtrar por nome ou serviço"
+          value="{{filter}}"
+        >
+
+        <button type="submit">Filtrar</button>
+      </form>
+    </div>
+
     
     <table width="100%">
       <thead>
         <tr>
           <th>Instrutor</th>
           <th>Atendimento</th>
+          <th>Alunos</th>
           <th>Ação</th>
         </tr>
       </thead>
@@ -24,19 +39,26 @@
             {{instructor.name}}
           </td>
           
-          {# <td>{{instructor.services}}</td> #}
-          
           <td>
-            {% for service in instructor.services %}
+            {% for service in instructor.subjects_taught %}
               <span>{{service}}</span>
             {% endfor %}
-          </td> 
+          </td>
+
+          <td>{{instructor.total_students}}</td>
           
           <td><a href="/instructors/{{instructor.id}}">Ver</a></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+
+    <div class="pagination"
+      data-page={{pagination.page}}
+      data-total={{pagination.total}}
+      data-filter={{filter}}
+    ></div>
+    
   </div>
 
 {% endblock content %}
